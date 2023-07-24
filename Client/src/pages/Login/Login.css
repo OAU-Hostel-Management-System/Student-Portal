@@ -1,118 +1,67 @@
-*{
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-form{
-    margin-top: -0.6rem;
-}
-
-.container{
-    background-color: #EBEBEB;
-    max-width: 50vw;
-    max-height: 95vh;
-    margin: 0 auto;
-    /* max-height: 982px; */
-    /* margin-top: 0;
-    padding-top: 0; */
-    /* width: 940px;
-    height: 940px; */
-    /* border-top-left-radius: 10px;
-    border-top-right-radius: 10px; */
-    /* margin-top: -1rem; */
-    overflow-x: hidden;
-    border-radius: 15px;
-    overflow: hidden;
+.loginform {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  background-image: url(/src/assets/Images/Container/oausha.jfif);
+  background-size: cover;
+  display: grid;
 }
 
-a{
-    font-size: 18px;
-    display: block;
-    margin-right: -24rem;
-    color: #113885;
-    font-size: 18px;
-    font-weight: 600;
+.containerlogin {
+  display: block;
+  background-color: #ebebeb;
+  width: 70%;
+  height: 100%;
+  height: 95vh;
+  margin: auto;
+  border-radius: 10px;
 }
 
-#pformatric{
-    /* margin-top: 28.75px; */
-    padding-top: 45px;
-    margin-bottom: -50px;
-    margin-left: -24rem;
-    font-size: 18px;
-    color: red;
+#Ellipse {
+  display: flex;
+  margin: auto;
+  width: 500px;
 }
 
-#pforpassword{
-    margin-top: -20px;
-    margin-bottom: -30px;
-    margin-left: -28rem;
-    font-size: 18px;
-    color: red;
-
+#oaulogo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
 }
 
-input{
-    display: block;
-    margin: 2rem auto;
-    width: 500px;
-    height: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.40);
-    border-radius: 10px;
-    background-color: #FDFDFD;
-    font-size: 20px;
-    padding-left: 20px;
-    color: #ADA6A6;
+#pformatric {
+  text-align: center;
 }
 
-input::placeholder{
-    color: #ADA6A6;
-    font-size: 20px;
-    font-style: normal;
+.inputLogin {
+  display: flex;
+  margin: auto;
+  width: 500px;
+  height: 3rem;
+  border-radius: 7.5px;
 }
 
-.login2{
-    margin-bottom: 0rem;
+#pforpassword {
+  text-align: center;
 }
 
-#Ellipse{
-    margin: 0 auto;
-    width: 400px;
-    height: 160px;
+#select {
+  display: flex;
+  margin: auto;
+  width: 505px;
+  height: 3rem;
+  border-radius: 7.5px;
 }
 
-#oaulogo{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -1rem;
-    width: 200px;
-}
+/* #forgotpasslogin {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  margin: auto;
+} */
 
-#select{
-    display: block;
-    margin: 1rem auto;
-    width: 525px;
-    height: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.40);
-    border-radius: 10px;
-    background-color: #FDFDFD;
-    color: #ADA6A6;
-    font-size: 20px;
-    font-style: normal;
-    text-indent: 20px;
-    
-}
-
-option{
-    width: 600px;
-    font-size: 20px;
-}
-
-.loginButtonsDiv{
-margin: 40px auto;
-}
-
-#studentbutton{
-    margin-left: 50px;
+.loginButtonsDiv {
+  display: flex;
+  margin: auto;
 }
