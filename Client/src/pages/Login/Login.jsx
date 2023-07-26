@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import Button from "../../Components/Button/Button";
 import Image from "../../assets/Images/Image";
 import "./Login.css";
 import { useFormik } from "formik";
@@ -22,7 +21,7 @@ const Login = () => {
       MatricOrID: Yup.string()
         .max(20, "Matric No/Staff ID must be 20 characters or less")
         .required("Matric No/Staff ID is required."),
-      password: Yup.string().required("Password is required"),
+      password: Yup.string().required("Password is required."),
       // .matches(
       //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
       //   "Invalid Password"
@@ -32,9 +31,10 @@ const Login = () => {
     //Submit Form
     onSubmit: (values) => {
       console.log(values);
+      navigate("/home");
     },
   });
-  console.log(formik.errors);
+  //   console.log(formik.errors);
   const navigate = useNavigate();
 
   return (
@@ -42,7 +42,7 @@ const Login = () => {
       <div className="containerlogin">
         <img id="Ellipse" src={Image.Ellipse} alt="" />
         <img id="oaulogo" src={Image.Oaulogo} alt="" />
-        <p id={formik.errors.MatricOrID && "pformatric"}>
+        <p id={formik.errors.MatricOrID ? "pformatric" : "displaynone"}>
           {formik.errors.MatricOrID && formik.errors.MatricOrID}
         </p>
         <input
@@ -53,7 +53,7 @@ const Login = () => {
           value={formik.values.MatricOrID}
           onChange={formik.handleChange}
         />
-        <p id={formik.errors.password && "pforpassword"}>
+        <p id={formik.errors.password ? "pforpassword" : "displaynone"}>
           {formik.errors.password && formik.errors.password}
         </p>
         <input
@@ -95,18 +95,19 @@ const Login = () => {
           value={formik.values.semester}
           onChange={formik.handleChange}
         >
-          <option>HAMMATTAN</option>
+          <option>HARMATTAN</option>
           <option>RAIN</option>
         </select>
 
         <div id="forgotpasslogin">
-          <a
+          <label
+            className="labelpass"
             onClick={() => {
               navigate("/Forgotpassword");
             }}
           >
             Forgot password
-          </a>
+          </label>
         </div>
 
         <div className="loginButtonsDiv">
