@@ -4,35 +4,48 @@
   height: 100vh;
   background-image: url(/src/assets/Images/Container/oausha.jfif);
   background-size: cover;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerlogin {
-  display: grid;
+  /* display: grid;
+  place-items: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #ebebeb;
-  width: 50%;
+  width: 40%;
   height: 100%;
   height: 95vh;
   margin: auto;
   border-radius: 10px;
+  position: relative;
 }
 
 #Ellipse {
-  display: flex;
-  margin: 0 auto;
-  width: 450px;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 400px;
 }
 
 #oaulogo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 1;
+  top: 0;
+  z-index: 3;
+  width: 150px;
 }
 
 #pformatric {
   text-align: center;
-  margin-left: -280px;
+  margin-left: -11rem;
   margin-bottom: -20px;
   color: red;
 }
@@ -41,10 +54,14 @@
   display: none;
 }
 
+.matricdiv {
+  margin-top: 7rem;
+}
+
 .inputLogin {
-  display: flex;
-  margin: auto;
-  width: 500px;
+  /* display: flex; */
+  margin: 1.5rem auto;
+  width: 400px;
   height: 3rem;
   border-radius: 7.5px;
   font-size: 18px;
@@ -59,19 +76,9 @@
 
 #pforpassword {
   text-align: center;
-  margin-left: -350px;
-  margin-bottom: -35px;
+  margin-left: -15rem;
+  margin-bottom: -1rem;
   color: red;
-}
-
-#select {
-  display: flex;
-  margin: auto;
-  width: 505px;
-  height: 3rem;
-  border-radius: 7.5px;
-  font-size: 18px;
-  text-indent: 15px;
 }
 
 #forgotpasslogin {
@@ -82,13 +89,19 @@
 .labelpass {
   display: block;
   text-align: right;
-  margin-right: 110px;
+  margin-right: 6rem;
   font-weight: 600;
 }
 
-.loginButtonsDiv {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-  gap: 50px;
+.button_login {
+  margin-top: 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #113885;
+  color: #ffffff;
+  padding: 0.9rem 1.75rem;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
 }

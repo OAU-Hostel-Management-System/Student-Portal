@@ -12,8 +12,6 @@ const Login = () => {
     initialValues: {
       MatricOrID: "",
       password: "",
-      session: "2022/2023",
-      semester: "HAMMATTAN",
     },
 
     //Validate Form
@@ -42,17 +40,19 @@ const Login = () => {
       <div className="containerlogin">
         <img id="Ellipse" src={Image.Ellipse} alt="" />
         <img id="oaulogo" src={Image.Oaulogo} alt="" />
-        <p id={formik.errors.MatricOrID ? "pformatric" : "displaynone"}>
-          {formik.errors.MatricOrID && formik.errors.MatricOrID}
-        </p>
-        <input
-          className="inputLogin login1"
-          name="MatricOrID"
-          type="text"
-          placeholder="Matric No/Staff ID"
-          value={formik.values.MatricOrID}
-          onChange={formik.handleChange}
-        />
+        <div className="matricdiv">
+          <p id={formik.errors.MatricOrID ? "pformatric" : "displaynone"}>
+            {formik.errors.MatricOrID && formik.errors.MatricOrID}
+          </p>
+          <input
+            className="inputLogin login1"
+            name="MatricOrID"
+            type="text"
+            placeholder="Matric No/Staff ID"
+            value={formik.values.MatricOrID}
+            onChange={formik.handleChange}
+          />
+        </div>
         <p id={formik.errors.password ? "pforpassword" : "displaynone"}>
           {formik.errors.password && formik.errors.password}
         </p>
@@ -64,40 +64,6 @@ const Login = () => {
           value={formik.values.password}
           onChange={formik.handleChange}
         />
-        <select
-          name="session"
-          id="select"
-          className="firstselect"
-          value={formik.values.session}
-          onChange={formik.handleChange}
-        >
-          <option>2022/2023</option>
-          <option>2021/2022</option>
-          <option>2020/2021</option>
-          <option>2019/2020</option>
-          <option>2018/2019</option>
-          <option>2017/2018</option>
-          <option>2016/2017</option>
-          {/* <option>2015/2016</option>
-            <option>2014/2015</option>
-            <option>2013/2014</option>
-            <option>2012/2013</option>
-            <option>2011/2012</option>
-            <option>2010/2011</option>
-            <option>2009/2010</option>
-            <option>2008/2009</option>
-            <option>2007/2008</option>
-            <option>2006/2007</option> */}
-        </select>
-        <select
-          name="semester"
-          id="select"
-          value={formik.values.semester}
-          onChange={formik.handleChange}
-        >
-          <option>HARMATTAN</option>
-          <option>RAIN</option>
-        </select>
 
         <div id="forgotpasslogin">
           <label
@@ -110,10 +76,7 @@ const Login = () => {
           </label>
         </div>
 
-        <div className="loginButtonsDiv">
-          <Button>Login as Admin</Button>
-          <Button id="studentbutton">Login as Student</Button>
-        </div>
+        <button className="button_login">Login</button>
       </div>
     </form>
   );
