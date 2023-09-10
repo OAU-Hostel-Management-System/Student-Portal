@@ -13,3 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.active{
+  @apply text-[#113885] border-r-[#113885] bg-[#CFDEFD] border-r-4
+}
+
+.active svg{
+  @apply fill-[#113885]
+}

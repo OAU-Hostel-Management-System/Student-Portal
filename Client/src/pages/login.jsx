@@ -1,4 +1,4 @@
-import image from "../components/image";
+import image from "../components/Image";
 
 function Login() {
   return (
