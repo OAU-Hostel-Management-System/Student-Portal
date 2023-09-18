@@ -20,7 +20,7 @@ function Sidebar() {
       </div>
       <ul
         id=""
-        className="innerSidebar h-fit overflow-y-scroll scroll-smooth pb-10">
+        className="innerSidebar h-fit scroll-smooth pb-10">
         <li className="">
           <NavLink
             to="/"

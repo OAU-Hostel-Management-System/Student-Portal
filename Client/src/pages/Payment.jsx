@@ -112,7 +112,7 @@ const Payment = () => {
       </div>
       <div className="flex w-full justify-center items-center mt-6">
         <button className="py-2.5 px-4 bg-custom-blue hover:bg-custom-ash text-white rounded-md">
-          Make Request
+          Proceed to Pay
         </button>
       </div>
     </div>
