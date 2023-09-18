@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../components/Image";
+import IdCard from "../components/IdCard";
 
 const Home = () => {
+  const [showId, setShowId] = useState(false);
+  
   return (
-    <div className="w-full h-full space-y-6">
+    <div className="w-full min-h-[65vh] space-y-6">
       <div className="flex gap-6 items-center justify-between ">
         <div className="flex gap-6 items-center">
           <img
@@ -17,38 +20,16 @@ const Home = () => {
             <p className="font-semibold text-lg">Angola Hall of Residence</p>
           </div>
         </div>
-        <div className=" rounded-2xl flex items-center gap-4 cursor-pointer group border py-3 px-6 hover:bg-[#CFDEFD]">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 22 22"
-            fill="none"
-            className=" hover:stroke-custom-blue"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M14.9395 8.40741H21.0001V1"
-              stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21 8.40741C17.5612 3.46963 14.1273 1 10.697 1C7.26667 1 4.23636 2.48148 1.60606 5.44444M7.06061 13.5926H1V21"
-              stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M1 13.5926C4.43879 18.5304 7.87273 21 11.303 21C14.7333 21 17.7636 19.5185 20.3939 16.5556"
-              stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <p className="font-medium group-hover:text-custom-blue">ID Card</p>
+        <div onClick={()=>{setShowId(!showId)}} className=" rounded-2xl flex items-center gap-4 cursor-pointer group border py-3 px-6 hover:bg-[#CFDEFD]">
+          <p className="font-medium group-hover:text-custom-blue">View ID</p>
         </div>
       </div>
       <hr className="bg-[#CFDEFD]" />
       <div className="space-y-4">
+        <div className="flex justify-between items-center">
+          <p className=" text-custom-ash">Gender</p>
+          <p className="font-medium">Male</p>
+        </div>
         <div className="flex justify-between items-center">
           <p className=" text-custom-ash">Department</p>
           <p className="font-medium">Computer Science</p>
@@ -78,6 +59,7 @@ const Home = () => {
           <p className="font-medium">Successful</p>
         </div>
       </div>
+      {showId && <IdCard showId={showId} setShowId={setShowId} />}
     </div>
   );
 };

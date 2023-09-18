@@ -2,7 +2,7 @@ import image from "./Image";
 
 function Navbar() {
   return (
-    <div className="fixed top-0 pl-[370px] left-0 right-0 mx-auto flex items-center justify-between px-10 py-6 w-full bg-white">
+    <div className="fixed top-0 pl-[370px] left-0 right-0 mx-auto flex items-center justify-between px-10 py-6 w-full bg-white shadow-lg">
       <p>Home</p>
       <div className="gap-4 flex w-fit">
         <svg
