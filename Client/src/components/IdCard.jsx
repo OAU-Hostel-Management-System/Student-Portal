@@ -10,7 +10,7 @@ import {
 } from "./ui/card";
 import { cn } from "../libs/utils/utils";
 
-const IdCard = ({showId, setShowId}) => {
+const IdCard = ({showId, setShowId, userDetails}) => {
   return (
     <Card className="fixed border bottom-0 right-0 left-0 m-auto flex items-center justify-center w-screen h-screen z-50 border-1 p-0 shadow-none bg-[rgba(0,0,0,.3)] backdrop-blur outline-none ">
       <CardContent className="p-0">
@@ -27,7 +27,7 @@ const IdCard = ({showId, setShowId}) => {
               className="w-[90px] h-[90px] bg-white mt-2 ml-2 rounded-2xl z-[11] object-contain pt-4"
             />
             <div className="font-semibold">
-              <h2 className=" text-lg font-bold mt-3 text-center relative z-[11] uppercase">
+              <h2 className=" text-xl font-black mt-2 text-center relative z-[11] uppercase">
                 Obafemi Awolowo <br /> University, Ile-Ife
               </h2>
             </div>
@@ -48,27 +48,21 @@ const IdCard = ({showId, setShowId}) => {
               IDENTIFICATION CARD
             </p>
           </div>
-
           <div className="flex justify-between pb-4 px-4">
             <div className="border-2 border-[#18623E] w-[280px] rounded-xl overflow-hidden">
               <div className="border-b-2 border-black flex items-end gap-1.5">
                 <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
                   Name:
                 </p>
-                <p className="text-sm">Amujoyegbe Feyisayo</p>
+                <p className="text-sm">{userDetails?.fullName}</p>
               </div>
               <div className="border-b-2 border-black flex items-end gap-1.5">
                 <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
                   Reg No:
                 </p>
-                <p className="text-sm">419/c02/911</p>
+                <p className="text-sm">{userDetails?.matricNo}</p>
               </div>
-              <div className="border-b-2 border-black flex items-end gap-1.5">
-                <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
-                  Sex:
-                </p>
-                <p className="text-sm">Male</p>
-              </div>
+              
               <div className="border-b-2 border-black flex items-end gap-1.5">
                 <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
                   Session:
@@ -79,18 +73,28 @@ const IdCard = ({showId, setShowId}) => {
                 <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
                   Department:
                 </p>
-                <p className="text-sm">Computer Science</p>
+                <p className="text-sm">{userDetails?.dept}</p>
               </div>
-              <div className="flex items-end gap-1.5">
+              <div className="border-b-2 border-black flex items-end gap-1.5">
                 <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
-                  Room No:
+                  Room:
                 </p>
-                <p className="text-sm">Block A, Room 12</p>
+                <p className="text-sm">Block {userDetails?.room?.block}, Room {userDetails?.room?.roomNo}</p>
+              </div>
+              <div className="flex items-end gap-1.5 ">
+                <p className=" font-semibold bg-[#18623E] text-white px-2 py-0.5 rounded-md ">
+                  Extra:
+                </p>
+                <p className="text-sm"></p>
               </div>
             </div>
             <div className="space-y-3">
               <div className="border-2 border-[#18623E] h-32 w-32  rounded-xl"></div>
-              <div className="border-2 border-[#18623E] h-10 w-32  rounded-xl"></div>
+              <div className="border-2 border-[#18623E] h-10 w-32  rounded-xl flex items-center justify-end ">
+                <p className="px-1.5 py-1.5 h-full bg-[#18623E] rounded-r-lg -mr-0.5 text-white">
+                  {userDetails?.sex}
+                </p>
+              </div>
             </div>
           </div>
         </div>

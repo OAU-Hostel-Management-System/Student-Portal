@@ -38,7 +38,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/bedspace-request"
+            to="/dashboard/bedspace-request"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
               width="20"
@@ -53,7 +53,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
-            to="/rules-and-regulations"
+            to="/dashboard/rules-and-regulations"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
               width="20"
@@ -124,7 +124,7 @@ function Sidebar() {
         </li> */}
         <li>
           <NavLink
-            to="/payment"
+            to="/dashboard/payment"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
               width="20"
@@ -139,7 +139,7 @@ function Sidebar() {
         </li>
         <li>
           <p
-            to="/logout"
+            to="/dashboard/logout"
             className="w-full flex gap-4 items-center py-6 pl-10 hover:font-light group hover:bg-red-100 hover:text-red-500 cursor-pointer hover:border-r-red-500">
             <svg
               width="20"

@@ -10,7 +10,6 @@ function Navbar() {
           width="28"
           height="28"
           fill="currentColor"
-          class="bi bi-bell-fill "
           className="fill-black hover:fill-[#113885] cursor-pointer"
           viewBox="0 0 16 16"
         >
