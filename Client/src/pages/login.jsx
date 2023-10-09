@@ -41,9 +41,9 @@ function Login() {
       const username = userDetails.username;
       const password = userDetails.password;
       const token = response?.data?.token;
-      console.log(token, username, password);
+      console.log(token, username);
       if (response.status === 200) {
-        setAuth({ username, password, token });
+        setAuth({ username, token });
         setErr(false);
         setUserDetails({});
         setIsLoading(false);

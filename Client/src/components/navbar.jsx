@@ -1,10 +1,38 @@
+import { useEffect, useState } from "react";
 import image from "./Image";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation().pathname;
+  console.log(location)
+
+  const [currentPath, setCurrentPath] = useState("Home")
+
+  useEffect(() => {
+    setCurrentPath(location)
+    switch (location) {
+      case "/":
+        setCurrentPath("Home")
+        break;
+      case "/dashboard/bedspace-request":
+        setCurrentPath("Bedspace Request")
+        break;
+      case "/dashboard/rules-and-regulations":
+        setCurrentPath("Rules and Regulations")
+        break;
+      case "/dashboard/payment":
+        setCurrentPath("Payment")
+        break;
+      default:
+        setCurrentPath("Home")
+        break;
+    }
+  }, [location])
+  
   return (
     <div className="fixed top-0 pl-[370px] left-0 right-0 mx-auto flex items-center justify-between px-10 py-6 w-full bg-white shadow-lg">
-      <p>Home</p>
-      <div className="gap-4 flex w-fit">
+      <p className=" font-semibold">{currentPath}</p>
+      {/* <div className="gap-4 flex w-fit">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -19,7 +47,7 @@ function Navbar() {
         <img src={image.imageprofile} alt="" className="rounded-full w-8 h-8" />
 
         <a href="">johndoe@oauife.edu.ng</a>
-      </div>
+      </div> */}
     </div>
   );
 }

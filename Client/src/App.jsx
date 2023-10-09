@@ -15,14 +15,14 @@ function App() {
   // const isVerfied = true
   return (
     <>
-      {/* <ScrollToTopHandler> */}
+      <ScrollToTopHandler>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/*" element={<Dashboard />} />
         </Route>
       </Routes>
-      {/* </ScrollToTopHandler> */}
+      </ScrollToTopHandler>
     </>
   );
 }

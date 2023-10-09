@@ -1,15 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import image from "./Image";
-// import { useState } from "react";
-// import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-// import { FaFileCircleQuestion } from "react-icons/fa6";
+import useAuth from "../hooks/UseAuth";
 
 function Sidebar() {
-  // const [isReportDropdownOpen, setIsReportDropdownOpen] = useState(false);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
-  // const toggleReportDropdown = () => {
-  //   setIsReportDropdownOpen(prevState => !prevState);
-  // };
+  const logoutUser = ()=>{
+    setAuth({});
+    navigate("/login", { replace: true });
+  }
 
   return (
     <div className="fixed flex flex-col bg-white border-r h-screen w-[350px] pt-5 z-40">
@@ -140,6 +140,7 @@ function Sidebar() {
         <li>
           <p
             to="/dashboard/logout"
+            onClick={logoutUser}
             className="w-full flex gap-4 items-center py-6 pl-10 hover:font-light group hover:bg-red-100 hover:text-red-500 cursor-pointer hover:border-r-red-500">
             <svg
               width="20"
