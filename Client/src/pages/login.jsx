@@ -29,19 +29,15 @@ function Login() {
   const submitHandler = async e => {
     e.preventDefault();
     setIsLoading(true);
-    console.log(userDetails);
     try {
       const response = await axios.post(endpoint, JSON.stringify(userDetails), {
         headers: {
           "Content-Type": "application/json",
         }
       });
-      console.log(response);
 
       const username = userDetails.username;
-      const password = userDetails.password;
       const token = response?.data?.token;
-      console.log(token, username);
       if (response.status === 200) {
         setAuth({ username, token });
         setErr(false);
@@ -64,23 +60,23 @@ function Login() {
   };
 
   return (
-    <div className="flex w-full">
+    <div className="flex flex-col min-h-screen md:h-screen pb-20 md:flex-row w-full gap-14 md:gap-0">
       {/* LHS logo container  */}
-      <div className="hidden sm:flex bg-[#113885] border-black rounded-r-[5rem] w-1/2 h-screen flex-col justify-center items-center">
-        <img src={image.oaulogo} alt="" className="w-80 p-8" />
-        <p className=" text-lg sm:text-3xl text-white pb-6 font-bold">
+      <div className="flex bg-[#113885] border-black rounded-b-[5rem] md:rounded-none md:rounded-r-[5rem]  md:w-1/2 md:h-screen flex-col justify-center items-center py-5 md:py-0">
+        <img src={image.oaulogo} alt="" className="w-24 sm:w-40 p-2 md:w-72 md:p-4 " />
+        <p className=" text-lg sm:text-xl md:text-2xl lg:text-3xl text-white sm:pb-1 md:pb-3 font-bold">
           Obafemi Awolowo University
         </p>
-        <p className="sm:text-2xl text-white font-bold">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold">
           Hostel Management Portal
         </p>
       </div>
       {/* RHS form  */}
-      <div className="w-full sm:w-1/2 h-screen flex flex-col justify-center items-center">
+      <div className="w-full h-full md:w-1/2 md:h-screen flex flex-col justify-center items-center">
         <form
           method="post"
-          className="flex flex-col items-center justify-center w-11/12 sm:w-1/2">
-          <h1 className="font-bold text-3xl md:text-4xl mb-6">Login</h1>
+          className="flex flex-col items-center justify-center w-11/12 sm:w-8/12 md:w-1/2">
+          <h1 className="font-bold text-3xl md:text-4xl mb-2 sm:mb-6 text-[#113885]">Login</h1>
           <p className="mb-6 text-[#D10C0C]">{errorMessage}</p>
           <label htmlFor="username" className="text-left w-full mb-1.5">
             Matric Number
@@ -106,11 +102,11 @@ function Login() {
           />
           <button
             onClick={submitHandler}
-            className="text-white font-bold bg-[#113885] w-full p-2 rounded-md flex items-center justify-center h-10 ">
+            className="text-white font-bold bg-[#113885] w-full p-2 text-lg rounded-md flex items-center justify-center h-11 ">
             {!isLoading ? (
               "Login"
             ) : (
-              <ReactLoading type="spin" width={"20px"} height={"20px"} />
+              <ReactLoading type="spin" width={"25px"} height={"25px"} />
             )}
           </button>
         </form>

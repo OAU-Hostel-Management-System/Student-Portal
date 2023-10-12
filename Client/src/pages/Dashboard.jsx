@@ -15,27 +15,22 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userDetails, setUserDetails] = useState({});
   const [refetch, setRefetch] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
+
   const token = auth.token;
-  console.log("Token is - ", token);
 
   const fetchStudentData = async () => {
     try {
       const response = await axios.get(endpoint, {
         headers: {
-          Authorization: `${token}`, // Ensure "Bearer" prefix for the token
+          Authorization: `${token}`,
           "Content-Type": "application/json",
         }
       });
-
-      console.log("The response", response);
-
-      // Check if the response status is 200 before updating state
-      // if (response.status === 200) {
-        console.log("Here")
+      if (response.status === 200) {
       setUserDetails(response.data.data);
-      console.log(userDetails); // The updated state won't be available immediately after setUserInfo, so it may still log the previous state
       setIsLoading(false);
-      // }
+      }
     } catch (error) {
       console.error(error);
     }
@@ -47,10 +42,10 @@ const Dashboard = () => {
 
   return (
     <div className="w-full p-0 m-0 flex flex-row relative ">
-      <Sidebar />
-      <div className="w-full md:ml-[350px] relative bg-[#EBEBEB] min-h-screen flex flex-col scroll-smooth">
-        <Navbar />
-        <div className="p-14 bg-white m-4 mt-24">
+      <Sidebar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+      <div className="w-full md:ml-[350px] relative md:bg-[#EBEBEB] min-h-screen flex flex-col scroll-smooth">
+        <Navbar showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+        <div className="w-11/12 mx-auto mt-28 pb-20 md:w-full md:p-14 bg-white md:m-4 md:mt-24">
           <Routes>
             <Route path="/" element={<Home userDetails={userDetails} isLoading={isLoading} />} />
             <Route

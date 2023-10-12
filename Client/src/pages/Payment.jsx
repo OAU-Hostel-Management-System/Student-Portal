@@ -25,8 +25,8 @@ const Payment = ({ userDetails, isLoading }) => {
             </div>
           ) : (
             <>
-              <div className="space-y-4">
-                <div className="flex w-full justify-between text-lg text-[#00000099] gap-10">
+              <div className="space-y-2 sm:space-y-4">
+                <div className="flex w-full justify-between text-lg text-[#00000099] gap-2 sm:gap-10">
                   <div className="w-2/4">
                     <label>Matric No</label>
                     <br />
@@ -52,8 +52,8 @@ const Payment = ({ userDetails, isLoading }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-between text-lg text-[#00000099] gap-10">
-                  <div className="w-2/4">
+                <div className="flex flex-col sm:flex-row w-full justify-between text-lg text-[#00000099] gap-2 sm:gap-10">
+                  <div className="sm:w-2/4">
                     <label>Name</label>
                     <br />
                     <input
@@ -65,7 +65,7 @@ const Payment = ({ userDetails, isLoading }) => {
                       readOnly
                     />
                   </div>
-                  <div className="w-2/4">
+                  <div className="sm:w-2/4">
                     <label>Department</label>
                     <br />
                     <input
@@ -78,7 +78,7 @@ const Payment = ({ userDetails, isLoading }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-between text-lg text-[#00000099] gap-10">
+                <div className="flex w-full justify-between text-lg text-[#00000099] gap-2 sm:gap-10">
                   <div className="w-2/4">
                     <label>Hostel</label>
                     <br />
@@ -114,7 +114,7 @@ const Payment = ({ userDetails, isLoading }) => {
                     />
                   </div>
                 </div>
-                <div className="flex w-full justify-between text-lg text-[#00000099] gap-10">
+                <div className="flex w-full justify-between text-lg text-[#00000099] gap-2 sm:gap-10">
                   <div className="w-2/4">
                     <label>Room</label>
                     <br />

@@ -1,28 +1,42 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import image from "./Image";
 import useAuth from "../hooks/UseAuth";
+import Hamburger from "hamburger-react";
 
-function Sidebar() {
+function Sidebar({ showSideBar, setShowSideBar }) {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 
-  const logoutUser = ()=>{
+  const toggleNav = () => {
+    if (typeof window !== "undefined") {
+      const screen = window?.innerWidth;
+      screen < 768 && setShowSideBar(!showSideBar);
+    }
+  };
+
+  const logoutUser = () => {
+    toggleNav();
     setAuth({});
     navigate("/login", { replace: true });
-  }
+  };
 
   return (
-    <div className="fixed flex flex-col bg-white border-r h-screen w-[350px] pt-5 z-40">
-      <div className="mb-5 text-center h-fit">
+    <div
+      className={`fixed flex flex-col bg-white border-r h-screen md:w-[350px] pt-5 z-40 ${
+        showSideBar ? "w-[350px] md:w-[350px] border opacity-100" : "w-0 opacity-0 md:w-[350px] md:opacity-100 overflow-hidden"
+      } `}>
+      <div className="mb-5 text-center h-fit relative">
+      <div className="md:hidden absolute -top-2">
+        <Hamburger size={25} toggled={showSideBar} toggle={setShowSideBar} />
+      </div>
         <img src={image.oaulogo} className="mx-auto h-36" alt="oau logo" />
         <span className="font-semibold">Obafemi Awolowo University</span> <br />
         <span className="font-semibold text-sm">Hostel Management Portal</span>
       </div>
-      <ul
-        id=""
-        className="innerSidebar h-fit scroll-smooth pb-10">
+      <ul id="" className="innerSidebar h-fit scroll-smooth pb-10">
         <li className="">
           <NavLink
+            onClick={toggleNav}
             to="/"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] hover:bg-[#CFDEFD] cursor-pointer">
             <svg
@@ -38,6 +52,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
+            onClick={toggleNav}
             to="/dashboard/bedspace-request"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
@@ -53,6 +68,7 @@ function Sidebar() {
         </li>
         <li>
           <NavLink
+            onClick={toggleNav}
             to="/dashboard/rules-and-regulations"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
@@ -124,6 +140,7 @@ function Sidebar() {
         </li> */}
         <li>
           <NavLink
+            onClick={toggleNav}
             to="/dashboard/payment"
             className="w-full flex gap-4 items-center py-6 hover:border-r-4 hover:font-light group pl-10 hover:text-[#113885] hover:border-r-[#113885] active:text-[#113885] active:border-r-[#113885] cursor-pointer hover:bg-[#CFDEFD]">
             <svg
@@ -139,7 +156,7 @@ function Sidebar() {
         </li>
         <li>
           <p
-            to="/dashboard/logout"
+            // onClick={toggleNav}
             onClick={logoutUser}
             className="w-full flex gap-4 items-center py-6 pl-10 hover:font-light group hover:bg-red-100 hover:text-red-500 cursor-pointer hover:border-r-red-500">
             <svg

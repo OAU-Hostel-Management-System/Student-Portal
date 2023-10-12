@@ -14,7 +14,7 @@ const IdCard = ({ showId, setShowId, userDetails }) => {
   return (
     <Card className="fixed border bottom-0 right-0 left-0 m-auto flex items-center justify-center w-screen h-screen z-50 border-1 p-0 shadow-none bg-[rgba(0,0,0,.3)] backdrop-blur outline-none ">
       <CardContent className="p-0">
-        <div className="w-[480px] py-2 px-2.5 bg-white shadow-md rounded-2xl">
+        <div className="w-[480px] py-2 px-2.5 bg-white shadow-md rounded-2xl scale-75">
           <div className="w-full flex justify-between relative">
             <p
               onClick={() => {

@@ -3,11 +3,8 @@ import IdCard from "../components/IdCard";
 import ReactLoading from "react-loading";
 
 const Home = ({ userDetails, isLoading }) => {
-  const [showId, setShowId] = useState(false);
-
-  console.log(userDetails);
-  console.log("Loading State", isLoading);
-  console.log(userDetails?.room?.users_paid)
+  const [showId, setShowId] = useState(true);
+  const [showSideBar, setShowSideBar] = useState(false);
 
   return (
     <div className="w-full min-h-[65vh] space-y-6">
@@ -22,16 +19,16 @@ const Home = ({ userDetails, isLoading }) => {
         </div>
       ) : (
         <>
-          <div className="flex gap-6 items-center justify-between ">
-            <div className="flex gap-6 items-center ">
+          <div className="flex flex-col md:flex-row gap-6 items-center justify-between ">
+            <div className="flex w-full gap-4 md:gap-6 items-center ">
               <img
                 src={userDetails?.image_url}
                 alt=""
-                className="rounded-2xl w-32 h-32 object-cover"
+                className="rounded-2xl w-32 h-36 object-cover bg-[#ddd]"
               />
               <div>
                 <p className="text-sm text-[#666666] font-semibold">Student</p>
-                <h2 className=" font-semibold text-2xl md:hidden">
+                <h2 className=" font-semibold text-lg md:text-2xl md:hidden">
                   {`${userDetails?.fullName?.split(" ")[0]} ${
                     userDetails?.fullName?.split(" ")[1]
                   } ${userDetails?.fullName?.split(" ")[2][0]}.`}
@@ -39,9 +36,17 @@ const Home = ({ userDetails, isLoading }) => {
                 <h2 className=" font-semibold text-2xl hidden md:block">
                   {userDetails?.fullName}
                 </h2>
-                <p className={`font-semibold text-lg ${Object.keys(userDetails?.room).length === 0 && "text-[#D10C0C]"} `}>
-                  {Object.keys(userDetails?.room).length === 0 ? "No Room Allocated" : userDetails?.room?.hostel_name + " Hall"} 
+                <p className={`font-semibold text-base md:text-lg`}>
+                  {userDetails?.matricNo} 
                 </p>
+                <button
+              onClick={() => {
+                setShowId(!showId);
+              }}
+              disabled={Object.keys(userDetails?.room).length === 0 || !userDetails?.room?.users_paid ? true : false}
+              className={`w-fit mt-2 rounded-2xl flex md:hidden items-center gap-4 cursor-pointer group border py-2 md:py-3 px-5 hover:bg-[#CFDEFD] whitespace-nowrap font-medium group-hover:text-custom-blue ${Object.keys(userDetails?.room).length === 0 || !userDetails?.room?.users_paid ? "pointer-events-none text-[#6d6d6d]" : ""}`}>
+              View ID
+            </button>
               </div>
             </div>
             <button
@@ -49,7 +54,7 @@ const Home = ({ userDetails, isLoading }) => {
                 setShowId(!showId);
               }}
               disabled={Object.keys(userDetails?.room).length === 0 || !userDetails?.room?.users_paid ? true : false}
-              className={`w-fit rounded-2xl flex items-center gap-4 cursor-pointer group border py-3 px-5 hover:bg-[#CFDEFD] whitespace-nowrap font-medium group-hover:text-custom-blue ${Object.keys(userDetails?.room).length === 0 || !userDetails?.room?.users_paid ? "pointer-events-none text-[#6d6d6d]" : ""}`}>
+              className={`w-fit hidden rounded-2xl md:flex items-center gap-4 cursor-pointer group border py-3 px-5 hover:bg-[#CFDEFD] whitespace-nowrap font-medium group-hover:text-custom-blue ${Object.keys(userDetails?.room).length === 0 || !userDetails?.room?.users_paid ? "pointer-events-none text-[#6d6d6d]" : ""}`}>
               View ID
             </button>
           </div>
