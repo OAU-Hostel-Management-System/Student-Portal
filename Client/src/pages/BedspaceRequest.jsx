@@ -36,6 +36,13 @@ const BedspaceRequest = ({
     } catch (error) {
       setShowLoading(false);
       console.log(error);
+      if (error.response && error.response.status === 403) {
+        localStorage.setItem("auth", JSON.stringify({}));
+        // Clear navigation history
+        const state = { title: "Home", url: "/" };
+        window.history.replaceState(state, state.title, state.url);
+        navigate("/login", { replace: true });
+      }
     }
   };
   return (

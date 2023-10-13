@@ -3,10 +3,6 @@ import image from "./Image";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
 } from "./ui/card";
 import { cn } from "../libs/utils/utils";
 
@@ -14,13 +10,13 @@ const IdCard = ({ showId, setShowId, userDetails }) => {
   return (
     <Card className="fixed border bottom-0 right-0 left-0 m-auto flex items-center justify-center w-screen h-screen z-50 border-1 p-0 shadow-none bg-[rgba(0,0,0,.3)] backdrop-blur outline-none ">
       <CardContent className="p-0">
-        <div className="w-[480px] py-2 px-2.5 bg-white shadow-md rounded-2xl scale-75">
+        <div className="w-[480px] py-2 px-2.5 bg-white shadow-md rounded-2xl scale-75 md:scale-100">
           <div className="w-full flex justify-between relative">
             <p
               onClick={() => {
                 setShowId(false);
               }}
-              className="px-2 py-1 font-bold cursor-pointer bg-white hover:bg-black hover:text-custom-blue absolute right-2 z-50 rounded-full">
+              className="px-2.5 scale-125 md:scale-100 py-1 font-bold cursor-pointer text-white bg-black hover:bg-white hover:text-custom-blue absolute -top-12 right-0 z-50 rounded-full">
               X
             </p>
             <div className=" h-[82px] bg-[#3EAC7E] -top-4 -left-2.5 mx-auto absolute z-10 rounded-t-2xl w-[480px]"></div>

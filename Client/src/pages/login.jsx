@@ -43,7 +43,9 @@ function Login() {
         setErr(false);
         setUserDetails({});
         setIsLoading(false);
+        localStorage.setItem("auth", JSON.stringify({"token": token}));
         navigate(from, { replace: true });
+        
       }
     } catch (error) {
       setIsLoading(false);
@@ -75,7 +77,7 @@ function Login() {
       <div className="w-full h-full md:w-1/2 md:h-screen flex flex-col justify-center items-center">
         <form
           method="post"
-          className="flex flex-col items-center justify-center w-11/12 sm:w-8/12 md:w-1/2">
+          className="flex flex-col items-center justify-center w-11/12 sm:w-8/12 lg:w-1/2">
           <h1 className="font-bold text-3xl md:text-4xl mb-2 sm:mb-6 text-[#113885]">Login</h1>
           <p className="mb-6 text-[#D10C0C]">{errorMessage}</p>
           <label htmlFor="username" className="text-left w-full mb-1.5">

@@ -1,21 +1,15 @@
 import React from "react";
-import ReactLoading from "react-loading";
+import Loader from "../components/Loader";
 
 const Payment = ({ userDetails, isLoading }) => {
   const makePayment = () => {
     console.log("here");
+    // fetchStudentData();
   };
   return (
     <div className="min-h-[65vh] space-y-6 w-full">
       {isLoading ? (
-        <div className="w-full min-h-[65vh] flex justify-center items-center">
-          <ReactLoading
-            type="spin"
-            color="#113885"
-            width={"50px"}
-            height={"50px"}
-          />
-        </div>
+        <Loader />
       ) : (
         <>
           <h1 className=" font-medium text-2xl">Payment Summary</h1>

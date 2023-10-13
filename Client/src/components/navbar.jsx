@@ -31,7 +31,7 @@ function Navbar({showSideBar, setShowSideBar}) {
   }, [location])
   
   return (
-    <div className="fixed top-0 md:pl-[370px] left-0 right-0 mx-auto flex items-center md:px-10 py-3 sm:py-6 w-full bg-white shadow-lg">
+    <div className="fixed top-0 md:pl-[370px] left-0 right-0 mx-auto flex items-center md:px-10 py-3 sm:py-6 w-full bg-white shadow-lg box-border">
       <div className="w-11/12 md:w-full flex items-center gap-4">
       <div className="md:hidden relative z-50">
         <Hamburger size={25} toggled={showSideBar} toggle={setShowSideBar}  />

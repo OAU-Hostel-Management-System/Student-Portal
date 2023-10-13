@@ -1,10 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import image from "./Image";
-import useAuth from "../hooks/UseAuth";
+// import useAuth from "../hooks/UseAuth";
 import Hamburger from "hamburger-react";
 
 function Sidebar({ showSideBar, setShowSideBar }) {
-  const { setAuth } = useAuth();
+  // const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const toggleNav = () => {
@@ -16,7 +16,10 @@ function Sidebar({ showSideBar, setShowSideBar }) {
 
   const logoutUser = () => {
     toggleNav();
-    setAuth({});
+    localStorage.setItem("auth", JSON.stringify({}));
+    // Clear navigation history
+    const state = { title: "Home", url: "/" };
+    window.history.replaceState(state, state.title, state.url);
     navigate("/login", { replace: true });
   };
 
@@ -29,7 +32,7 @@ function Sidebar({ showSideBar, setShowSideBar }) {
       <div className="md:hidden absolute -top-2">
         <Hamburger size={25} toggled={showSideBar} toggle={setShowSideBar} />
       </div>
-        <img src={image.oaulogo} className="mx-auto h-36" alt="oau logo" />
+        <img src={image.oaulogo} className="mx-auto h-28 sm:h-36" alt="oau logo" />
         <span className="font-semibold">Obafemi Awolowo University</span> <br />
         <span className="font-semibold text-sm">Hostel Management Portal</span>
       </div>

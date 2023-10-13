@@ -1,6 +1,6 @@
 import React from "react";
 const PDF_FILE_URL =
-  "http://localhost:5173/pdf/Hall-of-residence-basic-rules-regulations.pdf"; // Replace with your PDF content
+  "https://student-hms-portal.netlify.app/pdf/Hall-of-residence-basic-rules-regulations.pdf"; // Replace with your PDF content
 
 const RulesRegulations = () => {
   const downloadPDF = () => {
