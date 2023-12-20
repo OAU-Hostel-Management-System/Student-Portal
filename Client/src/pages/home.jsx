@@ -3,7 +3,7 @@ import IdCard from "../components/IdCard";
 import Loader from "../components/Loader";
 
 const Home = ({ userDetails, isLoading }) => {
-  const [showId, setShowId] = useState(true);
+  const [showId, setShowId] = useState(false);
   console.log(userDetails?.image_url);
 
   return (
