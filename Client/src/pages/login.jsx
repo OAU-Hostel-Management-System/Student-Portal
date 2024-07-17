@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import useAuth from "../hooks/UseAuth";
+import Header from "../components/Header";
 const endpoint = "https://hmsbackend-c36l.onrender.com/login";
 
 function Login() {
@@ -76,10 +77,11 @@ function Login() {
 
   return (
     <div className="flex flex-col min-h-screen md:h-screen justify-center items-center md:flex-row w-full gap-14 md:gap-0 bg-[#ededed]">
+      <Header />
       {/* LHS logo container  */}
 
       {/* RHS form  */}
-      <div className="w-[500px] max-w-[500px] flex flex-col justify-center items-center special-shadow bg-white">
+      <div className="w-11/12 sm:w-[400px] md:w-[500px] md:max-w-[500px] flex flex-col justify-center items-center special-shadow bg-white">
         <form
           method="post"
           className="flex flex-col items-center justify-center w-full p-10 gap-2.5">
@@ -111,24 +113,6 @@ function Login() {
               Session
             </option>
             {sessionsData.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <select
-            name="semester"
-            id="semester"
-            placeholder="Semester"
-            // onChange={handleChange}
-            className=" border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]">
-            <option
-              value=""
-              className="text-[#c0bfbf] font-medium"
-              unselectable="">
-              Semester
-            </option>
-            {semesterData.map((option, index) => (
               <option key={index} value={option}>
                 {option}
               </option>

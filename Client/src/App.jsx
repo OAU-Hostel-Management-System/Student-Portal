@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/Home";
 import BedspaceRequest from "./pages/bedspacerequest";
 import RulesRegulations from "./pages/RulesRegulations";
 import Payment from "./pages/Payment";
@@ -17,7 +16,6 @@ function App() {
   return (
     <>
       <ScrollToTopHandler>
-        <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}>

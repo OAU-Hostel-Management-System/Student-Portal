@@ -29,7 +29,7 @@ function Sidebar({ showSideBar, setShowSideBar }) {
         showSideBar ? "w-[350px] md:w-[350px] border opacity-100" : "w-0 opacity-0 md:w-[350px] md:opacity-100 overflow-hidden"
       } `}>
       <div className="mb-5 text-center h-fit relative">
-      <div className="md:hidden absolute -top-2">
+      <div className="md:hidden absolute -top-2 left-4">
         <Hamburger size={25} toggled={showSideBar} toggle={setShowSideBar} />
       </div>
         <img src={image.oaulogo} className="mx-auto h-28 sm:h-36" alt="oau logo" />
