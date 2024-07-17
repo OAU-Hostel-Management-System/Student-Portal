@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const fetch_endpoint =
   "https://hmsbackend-c36l.onrender.com/student/bedspace/fetchSpaceForPayment";
 const endpoint =
@@ -8,6 +9,7 @@ const endpoint =
 
 const Payment = ({fetchStudentData}) => {
   const [showLoading, setShowLoading] = useState(true);
+  const navigate = useNavigate();
 
   const auth = JSON.parse(localStorage.getItem("auth"));
   const [paymentData, setPaymentData] = useState({});
@@ -55,7 +57,7 @@ const Payment = ({fetchStudentData}) => {
       console.log(response);
       if (response.status === 200) {
         setShowLoading(true);
-        fetchStudentData();
+        window.location.href =`${response?.data?.d?.authorization_url}`
         setShowLoading(false);
       }
     } catch (error) {
