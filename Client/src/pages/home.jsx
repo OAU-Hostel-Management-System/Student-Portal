@@ -37,7 +37,7 @@ const Home = ({ userDetails, isLoading }) => {
                 <p className={`font-semibold text-base md:text-lg`}>
                   {userDetails?.profile?.matric_no}
                 </p>
-                <button
+                {/* <button
                   onClick={() => {
                     setShowId(!showId);
                   }}
@@ -54,10 +54,10 @@ const Home = ({ userDetails, isLoading }) => {
                       : ""
                   }`}>
                   View ID
-                </button>
+                </button> */}
               </div>
             </div>
-            <button
+            {/* <button
               onClick={() => {
                 setShowId(!showId);
               }}
@@ -74,7 +74,7 @@ const Home = ({ userDetails, isLoading }) => {
                   : ""
               }`}>
               View ID
-            </button>
+            </button> */}
           </div>
           <hr className="bg-[#CFDEFD]" />
           <div className="space-y-4">
