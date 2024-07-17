@@ -14,10 +14,16 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.active{
-  @apply text-[#113885] border-r-[#113885] bg-[#CFDEFD] border-r-4
+.active {
+  @apply text-[#113885] border-r-[#113885] bg-[#CFDEFD] border-r-4;
 }
 
-.active svg{
-  @apply fill-[#113885]
+.active svg {
+  @apply fill-[#113885];
+}
+
+.special-shadow {
+  box-shadow: 0px 2px 4px -1px #0000000f;
+
+  box-shadow: 0px 4px 6px -1px #0000001a;
 }

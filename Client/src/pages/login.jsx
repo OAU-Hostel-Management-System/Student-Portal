@@ -1,10 +1,10 @@
 import { useState } from "react";
-import image from "../components/Image";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+
+import { useNavigate, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
 import axios from "axios";
 import useAuth from "../hooks/UseAuth";
-const endpoint = "https://hmsbackend-c36l.onrender.com/auth/signin";
+const endpoint = "https://hmsbackend-c36l.onrender.com/login";
 
 function Login() {
   const { setAuth } = useAuth();
@@ -27,25 +27,27 @@ function Login() {
   };
 
   const submitHandler = async e => {
+    console.log(userDetails);
     e.preventDefault();
     setIsLoading(true);
     try {
       const response = await axios.post(endpoint, JSON.stringify(userDetails), {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         }
       });
 
+      console.log(response);
+
       const username = userDetails.username;
-      const token = response?.data?.token;
+      const token = response?.data?.d?.token;
       if (response.status === 200) {
         setAuth({ username, token });
         setErr(false);
         setUserDetails({});
         setIsLoading(false);
-        localStorage.setItem("auth", JSON.stringify({"token": token}));
+        localStorage.setItem("auth", JSON.stringify({ token: token }));
         navigate(from, { replace: true });
-        
       }
     } catch (error) {
       setIsLoading(false);
@@ -61,50 +63,80 @@ function Login() {
     }
   };
 
+  const sessionsData = [
+    "2023/2024",
+    "2022/2023",
+    "2021/2022",
+    "2020/2021",
+    "2019/2020",
+    "2018/2019"
+  ];
+
+  const semesterData = ["Harmattan", "Rain"];
+
   return (
-    <div className="flex flex-col min-h-screen md:h-screen pb-20 md:flex-row w-full gap-14 md:gap-0">
+    <div className="flex flex-col min-h-screen md:h-screen justify-center items-center md:flex-row w-full gap-14 md:gap-0 bg-[#ededed]">
       {/* LHS logo container  */}
-      <div className="flex bg-[#113885] border-black rounded-b-[5rem] md:rounded-none md:rounded-r-[5rem]  md:w-1/2 md:h-screen flex-col justify-center items-center py-5 md:py-0">
-        <img src={image.oaulogo} alt="" className="w-24 sm:w-40 p-2 md:w-72 md:p-4 " />
-        <p className=" text-lg sm:text-xl md:text-2xl lg:text-3xl text-white sm:pb-1 md:pb-3 font-bold">
-          Obafemi Awolowo University
-        </p>
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-bold">
-          Hostel Management Portal
-        </p>
-      </div>
+
       {/* RHS form  */}
-      <div className="w-full h-full md:w-1/2 md:h-screen flex flex-col justify-center items-center">
+      <div className="w-[500px] max-w-[500px] flex flex-col justify-center items-center special-shadow bg-white">
         <form
           method="post"
-          className="flex flex-col items-center justify-center w-11/12 sm:w-8/12 lg:w-1/2">
-          <h1 className="font-bold text-3xl md:text-4xl mb-2 sm:mb-6 text-[#113885]">Login</h1>
-          <p className="mb-6 text-[#D10C0C]">{errorMessage}</p>
-          <label htmlFor="username" className="text-left w-full mb-1.5">
-            Matric Number
-          </label>
+          className="flex flex-col items-center justify-center w-full p-10 gap-2.5">
+          <p className="text-[#D10C0C]">{errorMessage}</p>
+
           <input
             type="text"
             name="username"
             required
             placeholder="Matric Number"
             onChange={handleChange}
-            className="mb-6 border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]"
+            className="border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]"
           />
-          <label htmlFor="password" className="text-left w-full mb-1.5">
-            Password
-          </label>
           <input
             type="password"
             name="password"
             required
             placeholder="Password"
             onChange={handleChange}
-            className="mb-8 border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]"
+            className=" border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]"
           />
+          <select
+            name="session"
+            id="session"
+            placeholder="Session"
+            onChange={handleChange}
+            className=" border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]">
+            <option value="" className="text-[#c0bfbf] font-medium">
+              Session
+            </option>
+            {sessionsData.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <select
+            name="semester"
+            id="semester"
+            placeholder="Semester"
+            // onChange={handleChange}
+            className=" border border-[#666666] rounded-md w-full px-4 py-2.5 outline-[#113885]">
+            <option
+              value=""
+              className="text-[#c0bfbf] font-medium"
+              unselectable="">
+              Semester
+            </option>
+            {semesterData.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
           <button
             onClick={submitHandler}
-            className="text-white font-bold bg-[#113885] w-full p-2 text-lg rounded-md flex items-center justify-center h-11 ">
+            className="text-white font-bold bg-[#3182ce] w-full p-2 text-lg rounded-md flex items-center justify-center h-11 mt-5">
             {!isLoading ? (
               "Login"
             ) : (

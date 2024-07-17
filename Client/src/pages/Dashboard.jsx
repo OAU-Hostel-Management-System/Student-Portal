@@ -8,7 +8,7 @@ import Navbar from "../components/navbar";
 import { Route, Routes, useNavigate } from "react-router-dom";
 // import useAuth from "../hooks/UseAuth";
 import axios from "axios";
-const endpoint = "https://hmsbackend-c36l.onrender.com/students/fetchDetails";
+const endpoint = "https://hmsbackend-c36l.onrender.com/student/profile";
 
 const Dashboard = () => {
   // const { auth } = useAuth();
@@ -24,12 +24,13 @@ const Dashboard = () => {
     try {
       const response = await axios.get(endpoint, {
         headers: {
-          Authorization: `${token}`,
+          "authorization": `Bearer ${token}`,
           "Content-Type": "application/json"
         }
       });
       if (response.status === 200) {
-        setUserDetails(response.data.data);
+        console.log(response);
+        setUserDetails(response.data.d);
         setIsLoading(false);
       }
     } catch (error) {
@@ -63,8 +64,6 @@ const Dashboard = () => {
               element={
                 <BedspaceRequest
                   userDetails={userDetails}
-                  setIsLoading={setIsLoading}
-                  isLoading={isLoading}
                   fetchStudentData={fetchStudentData}
                 />
               }
@@ -76,7 +75,7 @@ const Dashboard = () => {
             <Route
               path="/dashboard/payment"
               element={
-                <Payment userDetails={userDetails} isLoading={isLoading} />
+                <Payment fetchStudentData={fetchStudentData} />
               }
             />
           </Routes>

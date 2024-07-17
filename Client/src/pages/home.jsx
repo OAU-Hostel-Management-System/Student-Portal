@@ -4,7 +4,8 @@ import Loader from "../components/Loader";
 
 const Home = ({ userDetails, isLoading }) => {
   const [showId, setShowId] = useState(false);
-  console.log(userDetails?.image_url);
+  console.log("This is userDetail", userDetails);
+  console.log(userDetails?.profile?.img_url);
 
   return (
     <div className="w-full min-h-[65vh] space-y-6">
@@ -16,9 +17,9 @@ const Home = ({ userDetails, isLoading }) => {
             <div className="flex w-full gap-4 md:gap-6 items-center ">
               <img
                 src={
-                  userDetails?.image_url === ""
+                  userDetails?.profile?.img_url === ""
                     ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                    : userDetails?.image_url
+                    : userDetails?.profile?.img_url
                 }
                 alt=""
                 className="rounded-2xl w-32 h-36 object-cover bg-[#ddd]"
@@ -26,29 +27,29 @@ const Home = ({ userDetails, isLoading }) => {
               <div>
                 <p className="text-sm text-[#666666] font-semibold">Student</p>
                 <h2 className=" font-semibold text-lg md:text-2xl md:hidden">
-                  {`${userDetails?.fullName?.split(" ")[0]} ${
-                    userDetails?.fullName?.split(" ")[1]
-                  } ${userDetails?.fullName?.split(" ")[2][0]}.`}
+                  {`${userDetails?.profile?.fullName?.split(" ")[0]} ${
+                    userDetails?.profile?.fullName?.split(" ")[1]
+                  } ${userDetails?.profile?.fullName?.split(" ").length > 3 && userDetails?.profile?.fullName?.split(" ")[2][0]}`}
                 </h2>
                 <h2 className=" font-semibold text-2xl hidden md:block">
-                  {userDetails?.fullName}
+                  {userDetails?.profile?.fullName}
                 </h2>
                 <p className={`font-semibold text-base md:text-lg`}>
-                  {userDetails?.matricNo}
+                  {userDetails?.profile?.matric_no}
                 </p>
                 <button
                   onClick={() => {
                     setShowId(!showId);
                   }}
                   disabled={
-                    Object.keys(userDetails?.room).length === 0 ||
-                    !userDetails?.room?.users_paid
+                    Object.keys(userDetails?.bedspace).length === 0 ||
+                    !userDetails?.bedspace?.paid
                       ? true
                       : false
                   }
                   className={`w-fit mt-2 rounded-2xl flex md:hidden items-center gap-4 cursor-pointer group border py-2 md:py-3 px-5 hover:bg-[#CFDEFD] whitespace-nowrap font-medium group-hover:text-custom-blue ${
-                    Object.keys(userDetails?.room).length === 0 ||
-                    !userDetails?.room?.users_paid
+                    Object.keys(userDetails?.bedspace).length === 0 ||
+                    !userDetails?.bedspace?.paid
                       ? "pointer-events-none text-[#6d6d6d]"
                       : ""
                   }`}>
@@ -61,14 +62,14 @@ const Home = ({ userDetails, isLoading }) => {
                 setShowId(!showId);
               }}
               disabled={
-                Object.keys(userDetails?.room).length === 0 ||
-                !userDetails?.room?.users_paid
+                Object.keys(userDetails?.bedspace).length === 0 ||
+                !userDetails?.bedspace?.paid
                   ? true
                   : false
               }
               className={`w-fit hidden rounded-2xl md:flex items-center gap-4 cursor-pointer group border py-3 px-5 hover:bg-[#CFDEFD] whitespace-nowrap font-medium group-hover:text-custom-blue ${
-                Object.keys(userDetails?.room).length === 0 ||
-                !userDetails?.room?.users_paid
+                Object.keys(userDetails?.bedspace).length === 0 ||
+                !userDetails?.bedspace?.paid
                   ? "pointer-events-none text-[#6d6d6d]"
                   : ""
               }`}>
@@ -77,39 +78,43 @@ const Home = ({ userDetails, isLoading }) => {
           </div>
           <hr className="bg-[#CFDEFD]" />
           <div className="space-y-4">
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Gender</p>
               <p className="font-medium">
                 {userDetails?.sex === "M" ? "Male" : "Female"}
               </p>
-            </div>
-            <div className="flex justify-between items-center">
+            </div> */}
+            {/* <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Session</p>
-              <p className="font-medium">{userDetails?.session}</p>
+              <p className="font-medium">{userDetails?.profile?.session}</p>
+            </div> */}
+            <div className="flex justify-between items-center">
+              <p className=" text-custom-ash">Level</p>
+              <p className="font-medium">{`${userDetails?.profile?.part}00`}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Department</p>
-              <p className="font-medium">{userDetails?.dept}</p>
+              <p className="font-medium">{userDetails?.profile?.dept}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Faculty</p>
-              <p className="font-medium">{userDetails?.faculty}</p>
+              <p className="font-medium">{userDetails?.profile?.faculty}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Matric Number</p>
-              <p className={`font-medium`}>{userDetails?.matricNo}</p>
+              <p className={`font-medium`}>{userDetails?.profile?.matric_no}</p>
             </div>
             <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Hostel</p>
               <p
-                className={`font-medium ${
-                  Object.keys(userDetails?.room).length === 0 &&
+                className={`font-medium capitalize ${
+                  Object.keys(userDetails?.bedspace).length === 0 &&
                   "text-[#D10C0C]"
                 } `}>
-                {Object.keys(userDetails?.room).length !== 0
-                  ? userDetails?.room?.hostel_name === "PG"
+                {Object.keys(userDetails?.bedspace).length !== 0
+                  ? userDetails?.bedspace?.room_detail?.hostel_name === "PG"
                     ? "Post Graduate Hall"
-                    : `${userDetails?.room?.hostel_name} Hall`
+                    : `${userDetails?.bedspace?.room_detail?.hostel_name} Hall`
                   : "Unavailable"}
               </p>
             </div>
@@ -117,11 +122,11 @@ const Home = ({ userDetails, isLoading }) => {
               <p className=" text-custom-ash">Block</p>
               <p
                 className={`font-medium ${
-                  Object.keys(userDetails?.room).length === 0 &&
+                  Object.keys(userDetails?.bedspace).length === 0 &&
                   "text-[#D10C0C]"
                 } `}>
-                {Object.keys(userDetails?.room).length !== 0
-                  ? userDetails?.room?.block
+                {Object.keys(userDetails?.bedspace).length !== 0
+                  ? userDetails?.bedspace?.room_detail?.block
                   : "Unavailable"}
               </p>
             </div>
@@ -129,11 +134,11 @@ const Home = ({ userDetails, isLoading }) => {
               <p className=" text-custom-ash">Room</p>
               <p
                 className={`font-medium ${
-                  Object.keys(userDetails?.room).length === 0 &&
+                  Object.keys(userDetails?.bedspace).length === 0 &&
                   "text-[#D10C0C]"
                 } `}>
-                {Object.keys(userDetails?.room).length !== 0
-                  ? userDetails?.room?.roomNo
+                {Object.keys(userDetails?.bedspace).length !== 0
+                  ? userDetails?.bedspace?.room_detail?.roomNo
                   : "Unavailable"}
               </p>
             </div>
@@ -141,20 +146,20 @@ const Home = ({ userDetails, isLoading }) => {
               <p className=" text-custom-ash">Bed Space</p>
               <p
                 className={`font-medium ${
-                  Object.keys(userDetails?.room).length === 0 &&
+                  Object.keys(userDetails?.bedspace).length === 0 &&
                   "text-[#D10C0C]"
                 } `}>
-                {Object.keys(userDetails?.room).length !== 0
-                  ? userDetails?.room?.bedNo
+                {Object.keys(userDetails?.bedspace).length !== 0
+                  ? userDetails?.bedspace?.room_detail?.bedNo
                   : "Unavailable"}
               </p>
             </div>
             <div className="flex justify-between items-center">
               <p className=" text-custom-ash">Payment Status</p>
               <p className="font-medium">
-                {userDetails?.room?.users_paid === undefined
+                {userDetails?.bedspace?.paid === undefined
                   ? "None"
-                  : userDetails?.room?.users_paid
+                  : userDetails?.bedspace?.paid
                   ? "Paid"
                   : "Unpaid"}
               </p>
