@@ -29,7 +29,11 @@ const Home = ({ userDetails, isLoading }) => {
                 <h2 className=" font-semibold text-lg md:text-2xl md:hidden">
                   {`${userDetails?.profile?.fullName?.split(" ")[0]} ${
                     userDetails?.profile?.fullName?.split(" ")[1]
-                  } ${userDetails?.profile?.fullName?.split(" ").length > 3 && userDetails?.profile?.fullName?.split(" ")[2][0]}`}
+                  } ${
+                    userDetails?.profile?.fullName?.split(" ").length > 2
+                      ? userDetails?.profile?.fullName?.split(" ")[2][0] + "."
+                      : ""
+                  }`}
                 </h2>
                 <h2 className=" font-semibold text-2xl hidden md:block">
                   {userDetails?.profile?.fullName}

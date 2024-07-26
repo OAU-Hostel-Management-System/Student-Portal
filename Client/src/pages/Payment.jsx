@@ -190,13 +190,14 @@ const Payment = ({fetchStudentData}) => {
               <div className="flex w-full justify-center items-center mt-6">
                 <button
                   disabled={
-                    Object.keys(paymentData).length ===
-                      0 ||
-                    (Object.keys(paymentData).length !==
-                      0 &&
-                      paymentData?.paid === true)
-                      ? true
-                      : false
+                    // Object.keys(paymentData).length ===
+                    //   0 ||
+                    // (Object.keys(paymentData).length !==
+                    //   0 &&
+                    //   paymentData?.paid === true)
+                    //   ? true
+                    //   : false
+                    true
                   }
                   onClick={makePayment}
                   className={`py-2.5 px-4 bg-custom-blue hover:bg-custom-ash text-white rounded-md ${
